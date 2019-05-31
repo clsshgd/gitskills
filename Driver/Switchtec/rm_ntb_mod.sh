@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MODULE_NAME="hgst"
+MODULE_NAME="cls_switchtec"
 
 rmmod ntb_perf
 rmmod ntb_netdev

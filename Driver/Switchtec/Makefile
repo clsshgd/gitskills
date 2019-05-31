@@ -4,13 +4,13 @@
 #for example COMe/Stingray/Sella belongs to Euclid
 ifeq ($(PDT), Stingray)
 	VERSION_FILE = ../../../Euclid/Stingray/VERSION-GEN
-	MODULE_NAME=hgst_switchtec_f2
+	MODULE_NAME=cls_switchtec_f2
 else ifeq ($(PDT), COMe)
 	VERSION_FILE = ../../../Euclid/COMe/VERSION-GEN
-	MODULE_NAME=hgst_switchtec_f1
+	MODULE_NAME=cls_switchtec_f1
 else
 	VERSION_FILE = ../../../$(PDT)/VERSION-GEN
-	MODULE_NAME=hgst
+	MODULE_NAME=cls_switchtec
 endif
 
 4.4:	

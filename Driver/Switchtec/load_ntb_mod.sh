@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MODULE_NAME="hgst"
+MODULE_NAME="cls_switchtec"
 KERNEL_UNAME=$(uname -r)
 KERNEL_VER=${KERNEL_UNAME:0:4}
 
