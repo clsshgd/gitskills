@@ -1,9 +1,9 @@
 ----------------------------------------------------------------------------------------------------
-Package name:  psx-switchtec-release.zip
+Package name:  PCIeSwitchtec-release_v4.0.0.zip
 ----------------------------------------------------------------------------------------------------
 Version <4.0.0>
 Date: <2019/05/31>
-RELEASED BY Qiuyun Xie @celestica
+RELEASED BY qxie@celestica.com
 
 What Is Included：
 1. "switchtec-kernel-release_4.13_to_4.14" for kernel 4.13 to 4.14, 
@@ -12,7 +12,8 @@ What Is Included：
 	the switchtec & ntb_hw_switchtec code base version is v1.2-rc3 from Microsemi github switchtec-kernel；
 
 New features:
-1. Update the code base
+1. Update the code base according to Microsemi’s github.
+2. Support automatic loading ntb related drivers. If one canister has built the driver code, then after it rebooting and entering OS again, it will automatic load the NTB & SES related drivers.
 
 Fixed Bugs:
 1. Fix the issue that the NTB will lose link after rebooting and reloading ntb related drivers.
@@ -29,7 +30,7 @@ User Guide:
 		 The IP addresses of eth0 of the two canisters in the same chassis need to be set in the same network segment.
 5. The script "auto_load_ntb.sh" is used to auto load switchtec related drivers after rebooting.
    This has been set in the Makefile, you don't need to execute this script separately.
-6. If your kernel version is 4.14.***, you can run "make 4.14_clean" to clean the built files and unload switchtec related drivers.
+6. If your kernel version is 4.14.***, you can run "make 4.14_clean" to clean the built files and unload switchtec and NTB related drivers.
    
 Changes:
 None.
