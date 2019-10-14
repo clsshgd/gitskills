@@ -1123,7 +1123,7 @@ static int crosslink_enum_partition(struct switchtec_ntb *sndev,
 	u32 pff = ioread32(&part_cfg->vep_pff_inst_id);
 	struct pff_csr_regs __iomem *mmio_pff =
 		&sndev->stdev->mmio_pff_csr[pff];
-	const u64 bar_space = 0x1000000000LL;
+	const u64 bar_space = 0x4000000000LL;
 	u64 bar_addr;
 	int bar_cnt = 0;
 	int i;
