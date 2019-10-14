@@ -28,7 +28,7 @@
 
 OBJDIR=${OBJDIR:-.}
 GVF=$OBJDIR/version.h
-DEF_VER=4.0.0
+DEF_VER=4.1.0
 
 LF='
 '
