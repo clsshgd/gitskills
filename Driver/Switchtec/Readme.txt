@@ -2,8 +2,8 @@
 Package name:  PCIeSwitch-release_v4.1.0.zip
 ----------------------------------------------------------------------------------------------------
 Version <4.1.0>
-Date: <2019/05/31>
-RELEASED BY qxie@celestica.com
+Date: <2019/10/15>
+RELEASED BY carlwang@celestica.com
 
 What Is Included：
 1. "switchtec-kernel-release_4.13_to_4.14" for kernel version 4.13 to 4.14, 
@@ -14,6 +14,7 @@ What Is Included：
 New features:
 1. Update the code base according to Microsemi’s github.
 2. Support automatic loading ntb related drivers. If one canister has built the driver code, then after it rebooting and entering OS again, it will automatic load the NTB & SES related drivers.
+3. Support large NTB memory.
 
 Fixed Bugs:
 1. Fix the issue that the NTB will lose link after rebooting and reloading ntb related drivers.
@@ -37,7 +38,7 @@ Notes:
 These scripts are suitable for CentOS7.x system. If you want to use them on other OS versions, you may do some changes. 
    
 Changes:
-None.
+ Expand NTB memory space from 64GB to 256GB for release 4.19 version.
 
 Known Issues:
 None.
