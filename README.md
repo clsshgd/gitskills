@@ -40,6 +40,7 @@ Method 1: Loading switchtec and ntb drivers by running script:
    This has been set in the Makefile, you don't need to execute this script separately.
 5. If your kernel version is 4.14.***, you can run "make 4.14_clean" to clean the built files and unload switchtec and NTB related drivers.
 6. If you don't need NTB function, you can ignore errors about NTB. You just need to load cls_switchtec.ko by running the command "insmod switchtec-kernel-release_4.13_to_4.14/cls_switchtec.ko".
+7. Check the version of the NTB Driver：modinfo cls_switchtec.ko.
  
 Method 2: Loading switchtec and ntb drivers Manually:
 1. Run "uname -r" to get the kernel version information;
