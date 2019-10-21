@@ -20,21 +20,36 @@ Fixed Bugs:
 1. Fix the issue that the NTB will lose link after rebooting and reloading ntb related drivers.
 
 User Guide:
+There are two methods to load switchtec and ntb drivers.
+Method 1: Loading switchtec and ntb drivers by running script:
 1. Run "uname -r" to get the kernel version information;
-2. Enter the directory "psx-switchtec-release". 
-3. For example, if your kernel version is 4.14.***, you can run "make 4.14". 
-   Then the code branch "switchtec-kernel-release_4.13_to_4.14" will be built, the "load_ntb_mod.sh" will be run, so the switchtec related drivers will be loaded.
-4. In the script "load_ntb_mod.sh", you can change the eth0 IP address by modifingtwo places in the script:
-   (1) ifconfig eth0 192.168.1.100 
-   (2) echo -e "BOOTPROTO=static\nIPADDR=192.168.1.100\n..."
+2. For example,
+   If your kernel version is 4.14.***, you can run "make 4.14". Then the code branch "switchtec-kernel-release_4.13_to_4.14" will be built, then the "load_ntb_mod.sh" will be automatically executed, so the switchtec related drivers will be automatically loaded.   
+   Run command "lsmod" to check the switchtec and ntb drivers are loaded successfully.
+3. If you need to use NTB, you need to configure two canisters' eth0 IPs and make sure eth0 IP of the two canisters in the same chassis are set in the same network segment. 
+   In the script "load_ntb_mod.sh", you can change the eth0 IP address by modifing two places in the script:
+   Place (1): ifconfig eth0 192.168.1.100 
+   Place (2): echo -e "BOOTPROTO=static\nIPADDR=192.168.1.100\n..."
    Note: The two places IP addresses in the script should be set the same. 
-         The IP addresses of eth0 of the two canisters in the same chassis need to be set in the same network segment.
-5. The script "auto_load_ntb.sh" is used to automatically load switchtec related drivers after rebooting.
+4. The script "auto_load_ntb.sh" is used to automatically load switchtec related drivers after rebooting.
    This has been set in the Makefile, you don't need to execute this script separately.
-6. If your kernel version is 4.14.***, you can run "make 4.14_clean" to clean the built files and unload switchtec and NTB related drivers.
-7. If you don't need NTB function, you can ignore errors about NTB. You just need to load cls_switchtec.ko by running the command "insmod switchtec-kernel-release_4.13_to_4.14/cls_switchtec.ko".
-8. Check the version of the NTB Driver：modinfo cls_switchtec.ko.
+5. If your kernel version is 4.14.***, you can run "make 4.14_clean" to clean the built files and unload switchtec and NTB related drivers.
+6. If you don't need NTB function, you can ignore errors about NTB. You just need to load cls_switchtec.ko by running the command "insmod switchtec-kernel-release_4.13_to_4.14/cls_switchtec.ko".
  
+Method 2: Loading switchtec and ntb drivers Manually:
+1. Run "uname -r" to get the kernel version information;
+2. For example, if your kernel version is 4.14.***, enter "switchtec-kernel-release_4.13_to_4.14" directory.
+3. Load switchtec driver, run command:
+   make
+   insmod cls_switchtec.ko
+4. If you need to use NTB function, run command:
+   modprobe ntb dyndbg=+p
+   modprobe ntb_transport use_dma dyndbg=+p
+   modprobe ntb_perf dyndbg=+p
+   insmod ntb_hw_switchtec.o
+   modprobe ntb_netdev dyndbg=+p
+5. Run command "lsmod" to check the drivers are loaded successfully.
+6. If you need to use NTB, you need to configure two canisters' eth0 IPs and make sure eth0 IP of the two canisters in the same chassis are set in the same network segment.
 Notes: 
 These scripts are suitable for CentOS7.x system. If you want to use them on other OS versions, you may do some changes. 
    
@@ -52,5 +67,3 @@ Install/Upgrade Instruction:
 
 
 ----------------------------------------------------------------------------------------------------
-
-
