@@ -44,9 +44,9 @@ Method 2: Loading switchtec and ntb drivers Manually:
 4. If you need to use NTB function, run command:
    modprobe ntb dyndbg=+p
    modprobe ntb_transport use_dma dyndbg=+p
-   modprobe ntb_netdev dyndbg=+p
    modprobe ntb_perf dyndbg=+p
-   insmod ntb_hw_switchtec.o
+   insmod ntb_hw_switchtec.ko
+   modprobe ntb_netdev dyndbg=+p
 5. Run command "lsmod" to check the drivers are loaded successfully.
 6. If you need to use NTB, you need to configure two canisters' eth0 IPs and make sure eth0 IP of the two canisters in the same chassis are set in the same network segment.
   
