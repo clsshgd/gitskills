@@ -30,8 +30,11 @@ Method 1: Loading switchtec and ntb drivers by running script:
    Run command "lsmod" to check the switchtec and ntb drivers are loaded successfully.
 3. If you need to use NTB, you need to configure two canisters' eth0 IPs and make sure eth0 IP of the two canisters in the same chassis are set in the same network segment. 
    In the script "load_ntb_mod.sh", you can change the eth0 IP address by modifing two places in the script:
+   
    Place (1): ifconfig eth0 192.168.1.100 
+   
    Place (2): echo -e "BOOTPROTO=static\nIPADDR=192.168.1.100\n..."
+   
    Note: The two places IP addresses in the script should be set the same. 
 4. The script "auto_load_ntb.sh" is used to automatically load switchtec related drivers after rebooting.
    This has been set in the Makefile, you don't need to execute this script separately.
@@ -45,11 +48,17 @@ Method 2: Loading switchtec and ntb drivers Manually:
    make
    insmod cls_switchtec.ko
 4. If you need to use NTB function, run command:
+
    modprobe ntb dyndbg=+p
+   
    modprobe ntb_transport use_dma dyndbg=+p
+   
    modprobe ntb_perf dyndbg=+p
+   
    insmod ntb_hw_switchtec.o
+   
    modprobe ntb_netdev dyndbg=+p
+   
 5. Run command "lsmod" to check the drivers are loaded successfully.
 6. If you need to use NTB, you need to configure two canisters' eth0 IPs and make sure eth0 IP of the two canisters in the same chassis are set in the same network segment.
 Notes: 
