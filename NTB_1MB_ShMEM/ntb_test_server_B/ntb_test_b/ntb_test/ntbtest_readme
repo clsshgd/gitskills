@@ -1,0 +1,17 @@
+Build: 
+# make
+
+Run: 
+1. insert module on server A: "insmod ntbtest.ko addr=0x4; rmmod ntbtest"
+2. Dump memory on server B: "od -x --skip-bytes=0x4 --read-bytes=4 /dev/mem"
+
+The output of od on the B server should increment each time the module is 
+inserted on the A server.
+
+Before:
+0000004 eef3 f000
+0000010
+
+After:
+0000004 eef4 f000
+0000010 
